@@ -30,9 +30,3 @@ To deploy this project run
     cd frontend
     npm start
 ```
-
-
-## Authors
-
-- [@octokatherine](https://www.github.com/octokatherine)
-
