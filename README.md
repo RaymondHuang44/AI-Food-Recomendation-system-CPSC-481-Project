@@ -7,10 +7,13 @@ A Food Recomendation System created using Kagle Database with JSX (react) for th
 
 ## Authors
 
-Conrad Bidrawn
-Raymond Huang
-Andrew Kang
-Cisco Velasquez
+- [Conrad Bidrawn](https://www.github.com/ConradBdwn)
+- [Raymond Huang](https://www.github.com/RaymondHuang44)
+- [Andrew Kang](https://github.com/akangzork)
+- [Conrad Bidrawn](https://www.github.com/ciscovelasquez)
+
+
+
 
 ## Installation
 
@@ -27,4 +30,9 @@ To deploy this project run
     cd frontend
     npm start
 ```
+
+
+## Authors
+
+- [@octokatherine](https://www.github.com/octokatherine)
 
