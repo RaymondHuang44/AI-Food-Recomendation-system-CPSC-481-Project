@@ -10,7 +10,7 @@ A Food Recomendation System created using Kagle Database with JSX (react) for th
 - [Conrad Bidrawn](https://www.github.com/ConradBdwn)
 - [Raymond Huang](https://www.github.com/RaymondHuang44)
 - [Andrew Kang](https://github.com/akangzork)
-- [Cisco Velasquez](https://www.github.com/ciscovelasquez)
+- [Conrad Bidrawn](https://www.github.com/ciscovelasquez)
 
 
 
@@ -21,6 +21,12 @@ Install project by
 ```bash
     git clone https://github.com/RaymondHuang44/AI-Food-Recomendation-system-CPSC-481-Project.git
 ```
+
+Download the Database from Kaggle
+```bash
+    https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews/data
+```
+Unzip the file from Kaggle into the data folder
     
 ## Deployment
 
