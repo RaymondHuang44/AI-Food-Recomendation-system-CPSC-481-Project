@@ -10,7 +10,7 @@ A Food Recomendation System created using Kagle Database with JSX (react) for th
 - [Conrad Bidrawn](https://www.github.com/ConradBdwn)
 - [Raymond Huang](https://www.github.com/RaymondHuang44)
 - [Andrew Kang](https://github.com/akangzork)
-- [Conrad Bidrawn](https://www.github.com/ciscovelasquez)
+- [Cisco Velasquez](https://www.github.com/ciscovelasquez)
 
 
 
