@@ -71,7 +71,7 @@ def recommend():
         filtered = filtered[filtered['ProteinContent'] > 20]
 
     # Return top 20 results
-    return jsonify(filtered[['Name', 'Calories', 'RecipeCategory', 'FatContent', 'SaturatedFatContent', 'CarbohydrateContent', 'SugarContent', 'FiberContent', 'CholesterolContent', 'SodiumContent', 'ProteinContent']].head(20).to_dict(orient='records'))
+    return jsonify(filtered[['Name', 'Calories', 'RecipeCategory', 'FatContent', 'SaturatedFatContent', 'CarbohydrateContent', 'SugarContent', 'FiberContent', 'CholesterolContent', 'SodiumContent', 'ProteinContent', 'RecipeIngredientParts']].head(20).to_dict(orient='records'))
 
 if __name__ == '__main__':
     app.run(host='localhost', port=3001, debug=True)

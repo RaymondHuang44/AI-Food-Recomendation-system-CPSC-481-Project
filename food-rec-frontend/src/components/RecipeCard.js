@@ -23,10 +23,22 @@ const RecipeCard = ({ recipe }) => {
 
   // ingredients
   let ingredients = [];
-  try {
-    ingredients = JSON.parse(recipe.RecipeIngredientParts);
-  } catch {
-    ingredients = [];
+  if (Array.isArray(recipe.RecipeIngredientParts)) {
+    ingredients = recipe.RecipeIngredientParts;
+  } else if (typeof recipe.RecipeIngredientParts === 'string') {
+    try {
+      // Try JSON first
+      ingredients = JSON.parse(recipe.RecipeIngredientParts);
+    } catch {
+      const rVecMatch = recipe.RecipeIngredientParts.match(/^c\((.*)\)$/);
+      if (rVecMatch) {
+        ingredients = rVecMatch[1]
+          .split(',')
+          .map(s => s.trim().replace(/^"(.*)"$/, '$1'));
+      } else {
+        ingredients = [];
+      }
+    }
   }
 
   return (
