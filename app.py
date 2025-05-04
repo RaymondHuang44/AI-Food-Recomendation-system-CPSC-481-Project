@@ -28,6 +28,11 @@ def recommend():
         for pref in dietary:
             filtered = filtered[filtered['Keywords'].str.contains(pref, case=False, na=False)]
 
+    # Cuisine filtering
+    if cuisines:
+        for cuisine in cuisines:
+            filtered = filtered[filtered['Keywords'].str.contains(cuisine, case=False, na=False)]
+
     # Ingredient preferences
     if ingredients:
         for ing in ingredients:
