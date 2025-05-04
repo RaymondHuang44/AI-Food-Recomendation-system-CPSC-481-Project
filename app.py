@@ -6,7 +6,8 @@ import os
 
 app = Flask(__name__)
 
-CORS(app)
+# Explicitly allow only your frontend origin
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 # Load the dataset
 data = pd.read_csv('data/recipes.csv')
@@ -31,7 +32,7 @@ def recommend():
     # Cuisine filtering
     if cuisines:
         for cuisine in cuisines:
-            filtered = filtered[filtered['Keywords'].str.contains(cuisine, case=False, na=False)]
+            filtered = filtered[filtered['RecipeCategory'].str.contains(cuisine, case=False, na=False)]
 
     # Ingredient preferences
     if ingredients:
@@ -54,4 +55,4 @@ def recommend():
     return jsonify(filtered[['Name', 'Calories', 'ProteinContent']].head(20).to_dict(orient='records'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='localhost', port=3001, debug=True)

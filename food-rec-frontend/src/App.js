@@ -24,7 +24,7 @@ function App() {
         setUserPreferences(allPreferences);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/recommend', allPreferences);
+            const response = await axios.post('http://localhost:3001/api/recommend', allPreferences);
             setResults(response.data);
             setShowResults(true);
         } catch (error) {
