@@ -31,7 +31,7 @@ def recommend():
     # Ingredient preferences
     if ingredients:
         for ing in ingredients:
-            filtered = filtered[filtered['Ingredients'].str.contains(ing, case=False, na=False)]
+            filtered = filtered[filtered['RecipeIngredientParts'].str.contains(ing, case=False, na=False)]
 
     # Allergies/restrictions
     if allergies:
