@@ -18,15 +18,17 @@ const ResultsPage = ({ filters, results, onSearch }) => {
             initialProtein={filters.protein}
           />
         </div>
-        <div className="results-panel" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        <div className="results-panel">
           <div style={{ fontWeight: 'bold', fontSize: '2rem', marginBottom: '16px', width: '100%' }}>Results</div>
-          {results.length === 0 ? (
-            <div>No results found.</div>
-          ) : (
-            results.map((recipe, idx) => (
-              <RecipeCard key={idx} recipe={recipe} />
-            ))
-          )}
+          <div className="results-list" style={{ width: '100%' }}>
+            {results.length === 0 ? (
+              <div>No results found.</div>
+            ) : (
+              results.map((recipe, idx) => (
+                <RecipeCard key={idx} recipe={recipe} />
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>
