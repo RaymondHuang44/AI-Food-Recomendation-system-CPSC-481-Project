@@ -1,0 +1,99 @@
+body {
+  background-color: #e6e6e7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.header {
+  background-color: #7d4545;
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 30px 0 20px 0;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid #2196f3;
+  transition: box-shadow 0.3s ease;
+}
+
+.filters-box {
+  background-color: #8fa7a7;
+  color: white;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  height: 60vh;
+  margin: 0 auto;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+
+.results-container {
+  display: flex;
+  width: 100vw;
+  height: 80vh;
+  gap: 16px;
+}
+
+.filters-panel {
+  background-color: #8fa7a7;
+  color: white;
+  font-size: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 25vw;
+  padding: 24px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.results-panel {
+  background-color: #5b765b;
+  color: white;
+  font-size: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 70vw;
+  padding: 24px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.floating-box {
+  background-color: #8fa7a7;
+  color: white;
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60vw;
+  height: 60vh;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid #2196f3;
+  transition: box-shadow 0.3s ease;
+}

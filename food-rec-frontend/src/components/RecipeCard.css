@@ -1,0 +1,62 @@
+.recipe-card {
+  background: #5b765b;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(31,38,135,0.2);
+  padding: 16px;
+  margin: 12px;
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.1s;
+  display: inline-block;
+  vertical-align: top;
+}
+.recipe-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+}
+.recipe-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-card {
+  background: #fff;
+  color: #222;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 600px;
+  width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(31,38,135,0.37);
+}
+.modal-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
