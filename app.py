@@ -30,7 +30,26 @@ def recommend():
             filtered = filtered[filtered['Keywords'].str.contains(pref, case=False, na=False)]
 
     # Cuisine filtering
-    if cuisines:
+    asian_subcuisines = {'asian', 'cambodian', 'cantonese', 'chinese', 'filipino', 'indian', 'indonesian', 'iraqi', 'japanese', 'korean', 'malaysian', 'mongolian', 'nepalese', 'pakistani', 'palestinian', 'south asian', 'southwest asian', 'szechuan', 'thai', 'turkish', 'vietnamese'}
+    african_subcuisines = {'african', 'ethiopian', 'moroccan', 'nigerian', 'south african', 'sudanese', 'smali'}
+    north_american_subcuisines = {'canadian', 'cajun', 'costal rican', 'cuban', 'gutaemalan', 'haitian', 'mexican', 'native american', 'puerto rican', 'southwestern u.s.', 'tex mex'}
+    central_american_subcuisines = {'brazilian', 'chilean', 'ecuadorean', 'peruvian', 'south america', 'venezuelan'}
+    european_subcuisines = {'austrian', 'belgian', 'british', 'czech', 'danish', 'dutch', 'european', 'french', 'georgian', 'german', 'greek', 'hungarian', 'icelandic', 'italian', 'norwegian', 'polish', 'portuguese', 'russian', 'scandinavian', 'scottish', 'spanish', 'swedish', 'swiss', 'welsh'}
+    oceanic_subcuisines = {'australian', 'new zealand', 'polynesian'}
+
+    if any(cuisine in asian_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('asian', case=False, na=False)]
+    elif any(cuisine in african_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('african', case=False, na=False)]
+    elif any(cuisine in north_american_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('north american', case=False, na=False)]
+    elif any(cuisine in central_american_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('central american', case=False, na=False)]
+    elif any(cuisine in european_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('european', case=False, na=False)]
+    elif any(cuisine in oceanic_subcuisines for cuisine in cuisines):
+        filtered = filtered[filtered['RecipeCategory'].str.contains('oceanic', case=False, na=False)]
+    else:
         for cuisine in cuisines:
             filtered = filtered[filtered['RecipeCategory'].str.contains(cuisine, case=False, na=False)]
 

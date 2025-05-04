@@ -3,6 +3,14 @@ import React, { useState } from 'react';
 const CuisinePreferences = ({ onNext }) => {
     const [cuisines, setCuisines] = useState([]);
 
+    const handleCheckboxChange = (cuisine) => (e) => {
+        if (e.target.checked) {
+            setCuisines(prev => [...prev, cuisine]);
+        } else {
+            setCuisines(prev => prev.filter(c => c !== cuisine));
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onNext({ cuisinePreferences: cuisines });
@@ -16,71 +24,60 @@ const CuisinePreferences = ({ onNext }) => {
             <div className="floating-box">
                 <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
                     <h2>What are your favorite cuisines?</h2>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={cuisines.includes('italian')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setCuisines([...cuisines, 'italian']);
-                                } else {
-                                    setCuisines(cuisines.filter(c => c !== 'italian'));
-                                }
-                            }}
-                        /> Italian
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={cuisines.includes('mexican')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setCuisines([...cuisines, 'mexican']);
-                                } else {
-                                    setCuisines(cuisines.filter(c => c !== 'mexican'));
-                                }
-                            }}
-                        /> Mexican
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={cuisines.includes('mexican')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setCuisines([...cuisines, 'mexican']);
-                                } else {
-                                    setCuisines(cuisines.filter(c => c !== 'mexican'));
-                                }
-                            }}
-                        /> Mexican
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={cuisines.includes('asian')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setCuisines([...cuisines, 'asian']);
-                                } else {
-                                    setCuisines(cuisines.filter(c => c !== 'asian'));
-                                }
-                            }}
-                        /> Asian
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={cuisines.includes('spanish')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setCuisines([...cuisines, 'spanish']);
-                                } else {
-                                    setCuisines(cuisines.filter(c => c !== 'spanish'));
-                                }
-                            }}
-                        /> Spanish
-                    </label><br />
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('asian')}
+                                onChange={handleCheckboxChange('asian')}
+                            /> Asian
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('african')}
+                                onChange={handleCheckboxChange('african')}
+                            /> African
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('north_american')}
+                                onChange={handleCheckboxChange('north_american')}
+                            /> North American
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('central_american')}
+                                onChange={handleCheckboxChange('central_american')}
+                            /> Central American
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('european')}
+                                onChange={handleCheckboxChange('european')}
+                            /> European
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={cuisines.includes('oceanic')}
+                                onChange={handleCheckboxChange('oceanic')}
+                            /> Oceanic
+                        </label>
+                    </div>
                     <button type="submit" style={{ marginTop: 20 }}>Next</button>
                 </form>
             </div>
