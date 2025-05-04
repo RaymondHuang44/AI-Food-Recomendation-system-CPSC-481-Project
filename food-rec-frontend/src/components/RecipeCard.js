@@ -48,6 +48,15 @@ const RecipeCard = ({ recipe }) => {
             <h2>{recipe.Name}</h2>
             <div><strong>Calories:</strong> {recipe.Calories}</div>
             <div><strong>Protein:</strong> {recipe.ProteinContent}g</div>
+            <div><strong>Type:</strong> {recipe.RecipeCategory}</div>
+            <div><strong>FatContent:</strong> {recipe.FatContent}</div>
+            <div><strong>SaturatedFatContent:</strong> {recipe.SaturatedFatContent}</div>
+            <div><strong>Carbs:</strong> {recipe.CarbohydrateContent}</div>
+            <div><strong>Sugars:</strong> {recipe.Sugars}</div>
+            <div><strong>Fiber:</strong> {recipe.FiberContent}</div>
+            <div><strong>Cholesterol:</strong> {recipe.CholesterolContent}</div>
+            <div><strong>Sodium:</strong> {recipe.SodiumContent}</div>            
+
             <div><strong>Ingredients:</strong>
               <ul>
                 {ingredients.map((ing, idx) => <li key={idx}>{ing}</li>)}
