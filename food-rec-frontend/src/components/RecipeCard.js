@@ -61,13 +61,13 @@ const RecipeCard = ({ recipe }) => {
             <div><strong>Calories:</strong> {recipe.Calories}</div>
             <div><strong>Protein:</strong> {recipe.ProteinContent}g</div>
             <div><strong>Type:</strong> {recipe.RecipeCategory}</div>
-            <div><strong>FatContent:</strong> {recipe.FatContent}</div>
+            <div><strong>FatContent:</strong> {recipe.FatContent}g</div>
             <div><strong>SaturatedFatContent:</strong> {recipe.SaturatedFatContent}</div>
-            <div><strong>Carbs:</strong> {recipe.CarbohydrateContent}</div>
-            <div><strong>Sugars:</strong> {recipe.Sugars}</div>
-            <div><strong>Fiber:</strong> {recipe.FiberContent}</div>
-            <div><strong>Cholesterol:</strong> {recipe.CholesterolContent}</div>
-            <div><strong>Sodium:</strong> {recipe.SodiumContent}</div>            
+            <div><strong>Carbs:</strong> {recipe.CarbohydrateContent}g</div>
+            <div><strong>Sugars:</strong> {recipe.SugarContent}g</div>
+            <div><strong>Fiber:</strong> {recipe.FiberContent}g</div>
+            <div><strong>Cholesterol:</strong> {recipe.CholesterolContent}mg</div>
+            <div><strong>Sodium:</strong> {recipe.SodiumContent}mg</div>            
 
             <div><strong>Ingredients:</strong>
               <ul>
