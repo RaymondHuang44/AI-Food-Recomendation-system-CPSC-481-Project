@@ -27,12 +27,53 @@ Download the Database from Kaggle
     https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews/data
 ```
 Unzip the file from Kaggle into the data folder
+
+The `data` folder should look like this
+
+```bash
+/data
+  L recipes.csv
+  L recipes.parquet
+  L reviews.csv
+  L reviews.parquet
+```
     
 ## Deployment
 
 To deploy this project run
 
+### `Backend`
+
+`create Vertual Envierment`
 ```bash
-    cd frontend
+    python3 -m venv env
+```
+
+`macOS and Linux`
+```bash
+    source env/bin/activate
+```
+
+`Windows`
+```bash
+    env\Scripts\activate
+```
+
+install all python packages
+```bash
+    pip install -r requirements.txt
+```
+
+then run
+```bash
+    python3 app.py
+```
+
+
+### `Frontend`
+
+In another terminal
+```bash
+    cd food-rec-frontend
     npm start
 ```
