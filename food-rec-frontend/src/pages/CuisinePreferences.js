@@ -42,6 +42,45 @@ const CuisinePreferences = ({ onNext }) => {
                             }}
                         /> Mexican
                     </label><br />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={cuisines.includes('mexican')}
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setCuisines([...cuisines, 'mexican']);
+                                } else {
+                                    setCuisines(cuisines.filter(c => c !== 'mexican'));
+                                }
+                            }}
+                        /> Mexican
+                    </label><br />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={cuisines.includes('asian')}
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setCuisines([...cuisines, 'asian']);
+                                } else {
+                                    setCuisines(cuisines.filter(c => c !== 'asian'));
+                                }
+                            }}
+                        /> Asian
+                    </label><br />
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={cuisines.includes('spanish')}
+                            onChange={(e) => {
+                                if (e.target.checked) {
+                                    setCuisines([...cuisines, 'spanish']);
+                                } else {
+                                    setCuisines(cuisines.filter(c => c !== 'spanish'));
+                                }
+                            }}
+                        /> Spanish
+                    </label><br />
                     <button type="submit" style={{ marginTop: 20 }}>Next</button>
                 </form>
             </div>
