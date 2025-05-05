@@ -87,13 +87,25 @@ body {
 }
 
 .results-list {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  min-height: 0;
-  /* Custom scrollbar for subtle appearance */
-  scrollbar-width: thin;
-  scrollbar-color: #7d9c7d #5b765b;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  justify-content: flex-start;
 }
+
+@media (max-width: 1200px) {
+  .results-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .results-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 .results-list::-webkit-scrollbar {
   width: 6px;
   background: #5b765b;
@@ -169,4 +181,87 @@ body {
 @keyframes spin {
   0%   { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
+}
+
+input[type="checkbox"], input[type="radio"] {
+  accent-color: #4f2ee8;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.results-bg {
+  min-height: 100vh;
+  background: #6b7e6a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.results-floating-island {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  padding: 48px 215px 48px 56px;
+  max-width: 1200px;
+  min-width: 900px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+}
+
+.results-title {
+  color: #4f2ee8;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  margin-left: 8px;
+}
+
+.results-header-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.results-header-container {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.results-header {
+  background: #fff;
+  color: #4f2ee8;
+  font-size: 2.5rem;
+  font-weight: 700;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 900px;
+  border-radius: 18px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-align: left;
+  padding: 32px 215px 16px 215px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Remove background and border for .header when used in results-header-container */
+.results-header-container .header {
+  background: #fff;
+  border: none;
+  box-shadow: none;
 }
