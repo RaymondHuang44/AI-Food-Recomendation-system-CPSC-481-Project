@@ -13,6 +13,7 @@ function App() {
     const [userPreferences, setUserPreferences] = useState({});
     const [results, setResults] = useState([]);
     const [showResults, setShowResults] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleNext = (preferences) => {
         setUserPreferences(prev => ({ ...prev, ...preferences }));
@@ -26,6 +27,7 @@ function App() {
     const handleSubmit = async (preferences) => {
         const allPreferences = { ...userPreferences, ...preferences };
         setUserPreferences(allPreferences);
+        setLoading(true);
 
         try {
             const response = await axios.post('http://localhost:3001/api/recommend', allPreferences);
@@ -33,11 +35,19 @@ function App() {
             setShowResults(true);
         } catch (error) {
             alert('Failed to get recommendations');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div>
+            {loading && (
+                <div className="loader-overlay">
+                    <div className="loader"></div>
+                    <div style={{color: "#333", marginTop: 16}}>Loading recommendations...</div>
+                </div>
+            )}
             {!showResults ? (
                 <>
                     {currentPage === 1 && <DietaryPreferences onNext={handleNext} onBack={handleBack} />}

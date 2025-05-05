@@ -3,6 +3,7 @@ import './RecipeCard.css';
 
 const RecipeCard = ({ recipe }) => {
   const [expanded, setExpanded] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   // images
   let imageUrl = '';
@@ -41,9 +42,22 @@ const RecipeCard = ({ recipe }) => {
     }
   }
 
+  const handleOpen = () => {
+    setExpanded(true);
+    setClosing(false);
+  };
+
+  const handleClose = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setExpanded(false);
+      setClosing(false);
+    }, 200); // Match the duration of popupOut animation
+  };
+
   return (
     <>
-      <div className="recipe-card" onClick={() => setExpanded(true)}>
+      <div className="recipe-card" onClick={handleOpen}>
         {imageUrl && <img src={imageUrl} alt={recipe.Name} className="recipe-image" />}
         <h3>{recipe.Name}</h3>
         <div>{recipe.Calories} calories</div>
@@ -53,9 +67,12 @@ const RecipeCard = ({ recipe }) => {
         </div>
       </div>
       {expanded && (
-        <div className="modal-overlay" onClick={() => setExpanded(false)}>
-          <div className="modal-card" onClick={e => e.stopPropagation()}>
-            <button className="close-btn" onClick={() => setExpanded(false)}>×</button>
+        <div className="modal-overlay" onClick={handleClose}>
+          <div
+            className={`modal-card${closing ? ' closing' : ''}`}
+            onClick={e => e.stopPropagation()}
+          >
+            <button className="close-btn" onClick={handleClose}>×</button>
             {imageUrl && <img src={imageUrl} alt={recipe.Name} className="modal-image" />}
             <h2>{recipe.Name}</h2>
             <div><strong>Calories:</strong> {recipe.Calories}</div>

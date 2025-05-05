@@ -117,7 +117,7 @@ def recommend():
                            'SaturatedFatContent', 'CarbohydrateContent', 'SugarContent', 
                            'FiberContent', 'CholesterolContent', 'SodiumContent', 
                            'ProteinContent', 'RecipeIngredientParts']
-                                            ].head(20).to_dict(orient='records'))
+                                            ].head(38).to_dict(orient='records'))
 
 if __name__ == '__main__':
     app.run(host='localhost', port=3001, debug=True)
