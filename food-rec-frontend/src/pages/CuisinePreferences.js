@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CuisinePreferences = ({ onNext }) => {
+const CuisinePreferences = ({ onNext, onBack }) => {
     const [cuisines, setCuisines] = useState([]);
 
     const handleCheckboxChange = (cuisine) => (e) => {
@@ -78,7 +78,14 @@ const CuisinePreferences = ({ onNext }) => {
                             /> Oceanic
                         </label>
                     </div>
-                    <button type="submit" style={{ marginTop: 20 }}>Next</button>
+                    <div style={{ marginTop: 20 }}>
+                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                            Back
+                        </button>
+                        <button type="submit">
+                            {cuisines.length === 0 ? 'Skip' : 'Next'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

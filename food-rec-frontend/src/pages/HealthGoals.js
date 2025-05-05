@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 
-const HealthGoals = ({ onNext }) => {
+const HealthGoals = ({ onNext, onBack }) => {
     const [goal, setGoal] = useState('');
+
+    const handleRadioChange = (e) => {
+        setGoal(e.target.value);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,15 +23,19 @@ const HealthGoals = ({ onNext }) => {
                     <label>
                         <input
                             type="radio"
+                            name="goal"
+                            value="weight_loss"
                             checked={goal === 'weight_loss'}
-                            onChange={() => setGoal('weight_loss')}
+                            onChange={handleRadioChange}
                         /> Weight Loss
                     </label><br />
                     <label>
                         <input
                             type="radio"
+                            name="goal"
+                            value="muscle_gain"
                             checked={goal === 'muscle_gain'}
-                            onChange={() => setGoal('muscle_gain')}
+                            onChange={handleRadioChange}
                         /> Muscle Gain
                     </label><br />
                     <label>
@@ -37,7 +45,14 @@ const HealthGoals = ({ onNext }) => {
                             onChange={() => setGoal('general_health')}
                         /> General Health
                     </label><br />
-                    <button type="submit" style={{ marginTop: 20 }}>Next</button>
+                    <div style={{ marginTop: 20 }}>
+                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                            Back
+                        </button>
+                        <button type="submit">
+                            {goal === '' ? 'Skip' : 'Next'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 
-const IngredientPreferences = ({ onNext }) => {
+const IngredientPreferences = ({ onNext, onBack }) => {
     const [ingredients, setIngredients] = useState([]);
+
+    const handleCheckboxChange = (ingredient) => (e) => {
+        if (e.target.checked) {
+            setIngredients(prev => [...prev, ingredient]);
+        } else {
+            setIngredients(prev => prev.filter(i => i !== ingredient));
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -15,31 +23,19 @@ const IngredientPreferences = ({ onNext }) => {
             </div>
             <div className="floating-box">
                 <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
-                    <h2>What ingredients do you like?</h2>
+                    <h2>Do you have any ingredient preferences?</h2>
                     <label>
                         <input
                             type="checkbox"
                             checked={ingredients.includes('chicken')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setIngredients([...ingredients, 'chicken']);
-                                } else {
-                                    setIngredients(ingredients.filter(i => i !== 'chicken'));
-                                }
-                            }}
+                            onChange={handleCheckboxChange('chicken')}
                         /> Chicken
                     </label><br />
                     <label>
                         <input
                             type="checkbox"
                             checked={ingredients.includes('beef')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setIngredients([...ingredients, 'beef']);
-                                } else {
-                                    setIngredients(ingredients.filter(i => i !== 'beef'));
-                                }
-                            }}
+                            onChange={handleCheckboxChange('beef')}
                         /> Beef
                     </label><br />
                     <label>
@@ -55,7 +51,14 @@ const IngredientPreferences = ({ onNext }) => {
                             }}
                         /> Tofu
                     </label><br />
-                    <button type="submit" style={{ marginTop: 20 }}>Next</button>
+                    <div style={{ marginTop: 20 }}>
+                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                            Back
+                        </button>
+                        <button type="submit">
+                            {ingredients.length === 0 ? 'Skip' : 'Next'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>

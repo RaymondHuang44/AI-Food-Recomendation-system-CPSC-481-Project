@@ -19,6 +19,10 @@ function App() {
         setCurrentPage(currentPage + 1);
     };
 
+    const handleBack = () => {
+        setCurrentPage(currentPage - 1);
+    };
+
     const handleSubmit = async (preferences) => {
         const allPreferences = { ...userPreferences, ...preferences };
         setUserPreferences(allPreferences);
@@ -36,11 +40,11 @@ function App() {
         <div>
             {!showResults ? (
                 <>
-                    {currentPage === 1 && <DietaryPreferences onNext={handleNext} />}
-                    {currentPage === 2 && <CuisinePreferences onNext={handleNext} />}
-                    {currentPage === 3 && <IngredientPreferences onNext={handleNext} />}
-                    {currentPage === 4 && <HealthGoals onNext={handleNext} />}
-                    {currentPage === 5 && <AllergiesAndRestrictions onNext={handleSubmit} />}
+                    {currentPage === 1 && <DietaryPreferences onNext={handleNext} onBack={handleBack} />}
+                    {currentPage === 2 && <CuisinePreferences onNext={handleNext} onBack={handleBack} />}
+                    {currentPage === 3 && <IngredientPreferences onNext={handleNext} onBack={handleBack} />}
+                    {currentPage === 4 && <HealthGoals onNext={handleNext} onBack={handleBack} />}
+                    {currentPage === 5 && <AllergiesAndRestrictions onNext={handleSubmit} onBack={handleBack} />}
                 </>
             ) : (
                 <ResultsPage filters={userPreferences} results={results} />

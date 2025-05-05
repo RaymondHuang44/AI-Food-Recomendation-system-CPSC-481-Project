@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 
 const DietaryPreferences = ({ onNext }) => {
-    const [preferences, setPreferences] = useState([]);
+    const [dietary, setDietary] = useState([]);
+
+    const handleCheckboxChange = (diet) => (e) => {
+        if (e.target.checked) {
+            setDietary(prev => [...prev, diet]);
+        } else {
+            setDietary(prev => prev.filter(d => d !== diet));
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onNext({ dietaryPreferences: preferences });
+        onNext({ dietaryPreferences: dietary });
     };
 
     return (
@@ -19,43 +27,29 @@ const DietaryPreferences = ({ onNext }) => {
                     <label>
                         <input
                             type="checkbox"
-                            checked={preferences.includes('vegetarian')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setPreferences([...preferences, 'vegetarian']);
-                                } else {
-                                    setPreferences(preferences.filter(p => p !== 'vegetarian'));
-                                }
-                            }}
+                            checked={dietary.includes('vegetarian')}
+                            onChange={handleCheckboxChange('vegetarian')}
                         /> Vegetarian
                     </label><br />
                     <label>
                         <input
                             type="checkbox"
-                            checked={preferences.includes('vegan')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setPreferences([...preferences, 'vegan']);
-                                } else {
-                                    setPreferences(preferences.filter(p => p !== 'vegan'));
-                                }
-                            }}
+                            checked={dietary.includes('vegan')}
+                            onChange={handleCheckboxChange('vegan')}
                         /> Vegan
                     </label><br />
                     <label>
                         <input
                             type="checkbox"
-                            checked={preferences.includes('pescatarian')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setPreferences([...preferences, 'pescatarian']);
-                                } else {
-                                    setPreferences(preferences.filter(p => p !== 'pescatarian'));
-                                }
-                            }}
+                            checked={dietary.includes('pescatarian')}
+                            onChange={handleCheckboxChange('pescatarian')}
                         /> Pescatarian
                     </label><br />
-                    <button type="submit" style={{ marginTop: 20 }}>Next</button>
+                    <div style={{ marginTop: 20 }}>
+                        <button type="submit">
+                            {dietary.length === 0 ? 'Skip' : 'Next'}
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
