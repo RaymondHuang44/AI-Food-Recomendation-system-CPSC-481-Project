@@ -5,22 +5,6 @@ const RecipeCard = ({ recipe }) => {
   const [expanded, setExpanded] = useState(false);
   const [closing, setClosing] = useState(false);
 
-  // images
-  let imageUrl = '';
-  try {
-    const images = JSON.parse(recipe.Images);
-    imageUrl = Array.isArray(images) && images.length > 0 ? images[0] : '';
-  } catch {
-    imageUrl = '';
-  }
-
-  // instructions
-  let instructions = [];
-  try {
-    instructions = JSON.parse(recipe.RecipeInstructions);
-  } catch {
-    instructions = [];
-  }
 
   // ingredients
   let ingredients = [];
@@ -58,12 +42,10 @@ const RecipeCard = ({ recipe }) => {
   return (
     <>
       <div className="recipe-card" onClick={handleOpen}>
-        {imageUrl && <img src={imageUrl} alt={recipe.Name} className="recipe-image" />}
         <h3>{recipe.Name}</h3>
         <div>{recipe.Calories} calories</div>
         <div>{recipe.ProteinContent}g protein</div>
         <div>
-          <strong>Instructions:</strong> {instructions[0] ? instructions[0] : 'No instructions'}
         </div>
       </div>
       {expanded && (
@@ -73,28 +55,44 @@ const RecipeCard = ({ recipe }) => {
             onClick={e => e.stopPropagation()}
           >
             <button className="close-btn" onClick={handleClose}>×</button>
-            {imageUrl && <img src={imageUrl} alt={recipe.Name} className="modal-image" />}
             <h2>{recipe.Name}</h2>
-            <div><strong>Calories:</strong> {recipe.Calories}</div>
-            <div><strong>Protein:</strong> {recipe.ProteinContent}g</div>
-            <div><strong>Type:</strong> {recipe.RecipeCategory}</div>
-            <div><strong>FatContent:</strong> {recipe.FatContent}g</div>
-            <div><strong>SaturatedFatContent:</strong> {recipe.SaturatedFatContent}</div>
-            <div><strong>Carbs:</strong> {recipe.CarbohydrateContent}g</div>
-            <div><strong>Sugars:</strong> {recipe.SugarContent}g</div>
-            <div><strong>Fiber:</strong> {recipe.FiberContent}g</div>
-            <div><strong>Cholesterol:</strong> {recipe.CholesterolContent}mg</div>
-            <div><strong>Sodium:</strong> {recipe.SodiumContent}mg</div>            
-
-            <div><strong>Ingredients:</strong>
+            <div className="stats-grid">
+              <div className="stat-box">
+                <div className="stat-label">Calories</div>
+                <div className="stat-value">{recipe.Calories}</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-label">Protein</div>
+                <div className="stat-value">{recipe.ProteinContent}g</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-label">Type</div>
+                <div className="stat-value">{recipe.RecipeCategory}</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-label">Sugars</div>
+                <div className="stat-value">{recipe.SugarContent}g</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-label">Fat</div>
+                <div className="stat-value">{recipe.FatContent}g</div>
+              </div>
+              <div className="stat-box">
+                <div className="stat-label">Carbs</div>
+                <div className="stat-value">{recipe.CarbohydrateContent}g</div>
+              </div>
+            </div>
+            <ul className="other-stats-list">
+              <li><strong>Saturated Fat:</strong> {recipe.SaturatedFatContent}g</li>
+              <li><strong>Fiber:</strong> {recipe.FiberContent}g</li>
+              <li><strong>Cholesterol:</strong> {recipe.CholesterolContent}mg</li>
+              <li><strong>Sodium:</strong> {recipe.SodiumContent}mg</li>
+            </ul>
+            <div className="ingredients-section">
+              <h3>Ingredients</h3>
               <ul>
                 {ingredients.map((ing, idx) => <li key={idx}>{ing}</li>)}
               </ul>
-            </div>
-            <div><strong>Instructions:</strong>
-              <ol>
-                {instructions.map((step, idx) => <li key={idx}>{step}</li>)}
-              </ol>
             </div>
           </div>
         </div>
