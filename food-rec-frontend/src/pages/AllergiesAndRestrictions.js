@@ -87,10 +87,10 @@ const AllergiesAndRestrictions = ({ onNext, onBack }) => {
                         /> Gluten
                     </label>
                     <div style={{ marginTop: 20 }}>
-                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                        <button className="material-button" type="button" onClick={onBack} style={{ marginRight: 10 }}>
                             Back
                         </button>
-                        <button type="submit" style={{ marginTop: 20 }}>Get Recommendations</button>
+                        <button className="material-button" type="submit" style={{ marginTop: 20 }}>Get Recommendations</button>
                     </div>
                 </form>
             </div>

@@ -79,10 +79,10 @@ const CuisinePreferences = ({ onNext, onBack }) => {
                         </label>
                     </div>
                     <div style={{ marginTop: 20 }}>
-                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                        <button className="material-button" type="button" onClick={onBack} style={{ marginRight: 10 }}>
                             Back
                         </button>
-                        <button type="submit">
+                        <button className="material-button" type="submit">
                             {cuisines.length === 0 ? 'Skip' : 'Next'}
                         </button>
                     </div>

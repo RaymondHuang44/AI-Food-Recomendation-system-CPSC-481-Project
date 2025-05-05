@@ -46,10 +46,10 @@ const HealthGoals = ({ onNext, onBack }) => {
                         /> General Health
                     </label><br />
                     <div style={{ marginTop: 20 }}>
-                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                        <button className="material-button" type="button" onClick={onBack} style={{ marginRight: 10 }}>
                             Back
                         </button>
-                        <button type="submit">
+                        <button className="material-button" type="submit">
                             {goal === '' ? 'Skip' : 'Next'}
                         </button>
                     </div>

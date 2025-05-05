@@ -7,7 +7,7 @@ const ResultsPage = ({ filters, results, onSearch }) => {
   return (
     <div className="container">
       <div className="header">
-        Food Recommendation system
+        CraveWise
       </div>
       <div className="results-container">
         <div className="filters-panel">

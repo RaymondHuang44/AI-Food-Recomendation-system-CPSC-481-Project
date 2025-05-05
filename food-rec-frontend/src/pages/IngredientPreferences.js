@@ -52,10 +52,10 @@ const IngredientPreferences = ({ onNext, onBack }) => {
                         /> Tofu
                     </label><br />
                     <div style={{ marginTop: 20 }}>
-                        <button type="button" onClick={onBack} style={{ marginRight: 10 }}>
+                        <button className="material-button" type="button" onClick={onBack} style={{ marginRight: 10 }}>
                             Back
                         </button>
-                        <button type="submit">
+                        <button className="material-button" type="submit">
                             {ingredients.length === 0 ? 'Skip' : 'Next'}
                         </button>
                     </div>

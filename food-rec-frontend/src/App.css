@@ -12,7 +12,7 @@ body {
 }
 
 .header {
-  background-color: #7d4545;
+  background-color: #7A82AB;
   color: white;
   font-size: 2rem;
   text-align: center;
@@ -66,7 +66,7 @@ body {
 }
 
 .results-panel {
-  background-color: #5b765b;
+  background-color: #307473;
   color: white;
   font-size: 1.2rem;
   border-radius: 8px;
@@ -118,4 +118,28 @@ body {
   box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.25);
   border: 1px solid #2196f3;
   transition: box-shadow 0.3s ease;
+}
+
+.material-button {
+  background: #6200ea;              /* Material deep purple */
+  color: #fff;                      /* White text */
+  border: none;
+  border-radius: 18px;              /* Rounded corners */
+  min-width: 64px;                  /* As shown in the image */
+  padding: 8px 16px;                /* Top/bottom, left/right */
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;        /* Uppercase text */
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin: 8px 0;
+  outline: none;
+}
+
+.material-button:hover,
+.material-button:focus {
+  background: #3700b3;              /* Slightly darker on hover/focus */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
 }

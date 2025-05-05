@@ -46,7 +46,7 @@ const DietaryPreferences = ({ onNext }) => {
                         /> Pescatarian
                     </label><br />
                     <div style={{ marginTop: 20 }}>
-                        <button type="submit">
+                        <button className="material-button" type="submit">
                             {dietary.length === 0 ? 'Skip' : 'Next'}
                         </button>
                     </div>
