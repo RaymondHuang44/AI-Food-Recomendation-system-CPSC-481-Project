@@ -19,39 +19,51 @@ const IngredientPreferences = ({ onNext, onBack }) => {
     return (
         <div className="container">
             <div className="header">
-                Food Recommendation system
+                CraveWise
             </div>
-            <div className="floating-box">
-                <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
-                    <h2>Do you have any ingredient preferences?</h2>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={ingredients.includes('chicken')}
-                            onChange={handleCheckboxChange('chicken')}
-                        /> Chicken
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={ingredients.includes('beef')}
-                            onChange={handleCheckboxChange('beef')}
-                        /> Beef
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={ingredients.includes('tofu')}
-                            onChange={(e) => {
-                                if (e.target.checked) {
-                                    setIngredients([...ingredients, 'tofu']);
-                                } else {
-                                    setIngredients(ingredients.filter(i => i !== 'tofu'));
-                                }
-                            }}
-                        /> Tofu
-                    </label><br />
-                    <div style={{ marginTop: 20 }}>
+            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 400 }}>
+                <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div>
+                        <h2>Do you have any ingredient preferences?</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={ingredients.includes('meat')}
+                                    onChange={handleCheckboxChange('meat')}
+                                /> Meat
+                            </label>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={ingredients.includes('fish')}
+                                    onChange={handleCheckboxChange('fish')}
+                                /> Fish
+                            </label>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={ingredients.includes('poultry')}
+                                    onChange={handleCheckboxChange('poultry')}
+                                /> Poultry
+                            </label>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={ingredients.includes('wild game')}
+                                    onChange={handleCheckboxChange('wild game')}
+                                /> Wild Game
+                            </label>
+                            <label style={{ marginBottom: 0 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={ingredients.includes('shellfish')}
+                                    onChange={handleCheckboxChange('shellfish')}
+                                /> Shellfish
+                            </label>
+                        </div>
+                    </div>
+                    <div style={{ marginTop: 20, marginBottom: 20 }}>
                         <button className="material-button" type="button" onClick={onBack} style={{ marginRight: 10 }}>
                             Back
                         </button>

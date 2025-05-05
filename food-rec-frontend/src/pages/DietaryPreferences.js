@@ -19,33 +19,37 @@ const DietaryPreferences = ({ onNext }) => {
     return (
         <div className="container">
             <div className="header">
-                Food Recommendation system
+                CraveWise
             </div>
-            <div className="floating-box">
-                <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
-                    <h2>What are your dietary preferences?</h2>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={dietary.includes('vegetarian')}
-                            onChange={handleCheckboxChange('vegetarian')}
-                        /> Vegetarian
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={dietary.includes('vegan')}
-                            onChange={handleCheckboxChange('vegan')}
-                        /> Vegan
-                    </label><br />
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={dietary.includes('pescatarian')}
-                            onChange={handleCheckboxChange('pescatarian')}
-                        /> Pescatarian
-                    </label><br />
-                    <div style={{ marginTop: 20 }}>
+            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 400 }}>
+                <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                    <div>
+                        <h2>What are your dietary preferences?</h2>
+                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={dietary.includes('vegetarian')}
+                                    onChange={handleCheckboxChange('vegetarian')}
+                                /> Vegetarian
+                            </label>
+                            <label style={{ marginBottom: 8 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={dietary.includes('vegan')}
+                                    onChange={handleCheckboxChange('vegan')}
+                                /> Vegan
+                            </label>
+                            <label style={{ marginBottom: 0 }}>
+                                <input
+                                    type="checkbox"
+                                    checked={dietary.includes('pescatarian')}
+                                    onChange={handleCheckboxChange('pescatarian')}
+                                /> Pescatarian
+                            </label>
+                        </div>
+                    </div>
+                    <div style={{ marginTop: 20, marginBottom: 20 }}>
                         <button className="material-button" type="submit">
                             {dietary.length === 0 ? 'Skip' : 'Next'}
                         </button>
