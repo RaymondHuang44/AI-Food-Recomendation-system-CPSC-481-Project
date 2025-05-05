@@ -21,7 +21,7 @@ const DietaryPreferences = ({ onNext }) => {
             <div className="header">
                 CraveWise
             </div>
-            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 400 }}>
+            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: 400, width: '70vw' }}>
                 <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div>
                         <h2>What are your dietary preferences?</h2>

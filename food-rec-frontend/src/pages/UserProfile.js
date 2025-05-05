@@ -24,8 +24,8 @@ const UserProfile = ({ onNext }) => {
       <div className="header">
         CraveWise
       </div>
-      <div className="floating-box">
-        <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center' }}>
+      <div className="floating-box" style={{ width: '70vw', height: '20vw' }}>
+        <form onSubmit={handleSubmit} style={{ width: '100%', textAlign: 'center'}}>
           <h2>Your Profile</h2>
           <div>
             <label>

@@ -15,7 +15,7 @@
 
 .mealplan-bg {
   min-height: 100vh;
-  background: #6b7e6a;
+  background: #125366;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,12 +73,12 @@
 }
 
 .mealplan-meal-label {
-  color: #fff;
+  color: #4f2ee8;
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 32px;
   text-align: center;
-  text-shadow: 0 1px 4px #888;
+  font-weight: bold;
 }
 
 .mealplan-meal-slot {

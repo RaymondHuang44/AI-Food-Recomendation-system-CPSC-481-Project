@@ -124,7 +124,7 @@ function App() {
                     {currentPage === 1 && nutrientNeeds && (
                         <div className="container">
                             <div className="header">CraveWise</div>
-                            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height:500, textAlign: 'center' }}>
+                            <div className="floating-box" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height:500, textAlign: 'center', width: '70vw', alignItems: 'center' }}>
                                 <h2 style={{ marginBottom: 24 }}>Your Daily Nutrient Needs</h2>
                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: 48 }}>
                                     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

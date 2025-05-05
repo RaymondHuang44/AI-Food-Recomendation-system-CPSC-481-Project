@@ -1,5 +1,5 @@
 body {
-  background-color: #e6e6e7;
+  background-color: #125366;
   margin: 0;
   padding: 0;
 }
@@ -12,18 +12,23 @@ body {
 }
 
 .header {
-  background-color: #7A82AB;
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  padding: 16px 0 12px 0;
-  margin-top: 24px;
-  margin-bottom: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.25);
-  border: 1px solid #2196f3;
-  transition: box-shadow 0.3s ease;
+  background: #fff;
+  color: #4f2ee8;
+  font-size: 2.5rem;
+  font-weight: 700;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 900px;
+  border-radius: 18px;
+  box-shadow: none;
+  margin-bottom: 10px;
+  margin-top: 0;
+  text-align: left;
+  padding: 32px 46px 16px 46px;
   box-sizing: border-box;
+  text-align: center;
+  margin-top: 10px;
+  justify-self: center;
 }
 
 .filters-box {
@@ -49,6 +54,7 @@ body {
   height: 87vh;
   gap: 24px;
 }
+
 .filters-panel {
   background-color: #8fa7a7;
   color: white;
@@ -119,19 +125,27 @@ body {
 }
 
 .floating-box {
-  background-color: #8fa7a7;
-  color: white;
+  background: #fff;
+  color: black;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40vw;
-  height: 40vh;
+  width: 1200px;
+  height: 900px;
   margin: 0 auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px 0 rgba(31, 38, 135, 0.25);
-  border: 1px solid #2196f3;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px 0 rgba(31, 38, 135, 0.25);
+  padding: 48px 56px 48px 56px;
+  width: 100%;
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   transition: box-shadow 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
 }
 
 .material-button {
@@ -194,11 +208,11 @@ input[type="checkbox"], input[type="radio"] {
 
 .results-bg {
   min-height: 100vh;
-  background: #6b7e6a;
+  background: #125366;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
+  padding: 10px;
 }
 
 .results-floating-island {
