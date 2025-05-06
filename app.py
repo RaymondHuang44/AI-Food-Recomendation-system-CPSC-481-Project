@@ -96,16 +96,16 @@ def get_recommendations(preferences, n_recommendations=20):
         ' '.join(preferences.get('ingredientPreferences', [])),
         preferences.get('healthGoal', '')
     ])
-    
+
     # Transform query to TF-IDF
     query_vector = tfidf.transform([query])
-    
+
     # Calculate similarity with all recipes
     similarities = cosine_similarity(query_vector, tfidf_matrix).flatten()
-    
+
     # Get indices of top N similar recipes
     top_indices = similarities.argsort()[-n_recommendations:][::-1]
-    
+
     # Return recommended recipes
     return data.iloc[top_indices]
 
@@ -123,27 +123,30 @@ def filter_by_allergies(allergens_tuple):
 def recommend():
     """get the request from the frontend"""
     req = request.get_json()
-    
+
     # Get recommendations using content-based filtering
     recommendations = get_recommendations(req)
-    
+
     # Apply additional filters
     filtered = recommendations.copy()
-    
+
     # Dietary filtering
     if req.get('dietaryPreferences'):
         dietary_pattern = '|'.join(map(str.lower, req['dietaryPreferences']))
-        filtered = filtered[filtered['Keywords'].str.contains(dietary_pattern, case=False, na=False)]
+        filtered = filtered[filtered['Keywords'].str.contains(
+                                                dietary_pattern, case=False, na=False)]
 
     # Cuisine filtering
     if req.get('cuisinePreferences'):
         cuisine_pattern = '|'.join(map(str.lower, req['cuisinePreferences']))
-        filtered = filtered[filtered['RecipeCategory'].str.contains(cuisine_pattern, case=False, na=False)]
+        filtered = filtered[filtered['RecipeCategory'].str.contains(
+                                                cuisine_pattern, case=False, na=False)]
 
     # Ingredient preferences
     if req.get('ingredientPreferences'):
         ingredients_pattern = '|'.join(map(str.lower, req['ingredientPreferences']))
-        filtered = filtered[filtered['RecipeIngredientParts'].str.contains(ingredients_pattern, case=False, na=False)]
+        filtered = filtered[filtered['RecipeIngredientParts'].str.contains(
+                                                ingredients_pattern, case=False, na=False)]
 
     # Health goal filtering - adjusted for more reasonable calorie ranges
     if req.get('healthGoal') == 'weight_loss':
@@ -154,8 +157,9 @@ def recommend():
 
     # If we have too few results, get more recommendations
     if len(filtered) < 10:
-        more_recommendations = get_recommendations(req, n_recommendations=50)  # Get more recommendations
-        filtered = pd.concat([filtered, more_recommendations]).drop_duplicates()
+        more_recommendations = get_recommendations(req, n_recommendations=50)
+        filtered = pd.concat(
+                        [filtered, more_recommendations]).drop_duplicates()
 
     # Return top results
     return jsonify(filtered[['Name', 'Calories', 'RecipeCategory', 'FatContent',
@@ -166,6 +170,7 @@ def recommend():
 
 @app.route('/api/nutrient-needs', methods=['POST'])
 def nutrient_needs():
+    """get the request from the frontend for nutrient needs"""
     data_in = request.get_json()
     weight = float(data_in['weight'])
     height = float(data_in['height'])
@@ -203,6 +208,7 @@ def nutrient_needs():
     })
 
 def get_meal_plan(user_needs, recipes_df, num_meals=3):
+    """get the meal plan for the user"""
     best_plan = None
     best_score = float('inf')
     if len(recipes_df) == 0:
@@ -227,6 +233,7 @@ def get_meal_plan(user_needs, recipes_df, num_meals=3):
 
 @app.route('/api/meal-plan', methods=['POST'])
 def meal_plan():
+    """get the request from the frontend for meal plan"""
     req = request.get_json()
     user_needs = req['nutrientNeeds']
     dietary = req.get('dietaryPreferences', [])
@@ -246,18 +253,21 @@ def meal_plan():
     # Cuisine filtering
     if cuisines:
         cuisine_pattern = '|'.join(map(str.lower, cuisines))
-        filtered = filtered[filtered['RecipeCategory'].str.contains(cuisine_pattern, case=False, na=False)]
+        filtered = filtered[filtered['RecipeCategory'].str.contains(
+                                                    cuisine_pattern, case=False, na=False)]
 
     # Ingredient preferences
     if ingredients:
         for ing in ingredients:
-            filtered = filtered[filtered['RecipeIngredientParts'].str.contains(ing, case=False, na=False)]
+            filtered = filtered[filtered['RecipeIngredientParts'].str.contains(
+                                                            ing, case=False, na=False)]
 
     # Allergies/restrictions
     if allergies:
         for allergy in allergies:
             allergy_lower = allergy.lower()
-            filtered = filtered[~filtered['RecipeIngredientParts'].str.contains(allergy_lower, case=False, na=False)]
+            filtered = filtered[~filtered['RecipeIngredientParts'].str.contains(
+                                                            allergy_lower, case=False, na=False)]
 
     # Health goal
     if health_goal == 'weight_loss':
@@ -275,23 +285,23 @@ def meal_plan():
         plan = get_meal_plan(user_needs, filtered, num_meals=3)
         if plan is None:
             return jsonify({'error': 'No recipes available for your selected preferences. Please adjust your filters.'}), 400
-        
+
         # Replace NaN values with None before converting to dict
         plan = plan.replace({np.nan: None})
-        
+
         # Convert the plan to a list of recipes and ensure it's exactly 3 meals
         meals = plan.to_dict(orient='records')
         while len(meals) < 3:  # Pad with None if we have fewer than 3 meals
             meals.append(None)
         meals = meals[:3]  # Ensure we only have 3 meals
-        
+
         totals = {
             'calories': float(plan['Calories'].sum()),
             'protein': float(plan['ProteinContent'].sum()),
             'fat': float(plan['FatContent'].sum()),
             'carbs': float(plan['CarbohydrateContent'].sum())
         }
-        
+
         all_days.append(meals)
         all_totals.append(totals)
 
