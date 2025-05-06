@@ -40,11 +40,15 @@ The `data` folder should look like this
     
 ## Deployment
 
-To deploy this project run
+To deploy this project
+
+have `node.js` installed 
+
+`cd into project folder`
 
 ### `Backend`
 
-`create Vertual Envierment`
+`create Vertual Envierment inside project folder`
 ```bash
     python3 -m venv env
 ```
@@ -59,12 +63,12 @@ To deploy this project run
     env\Scripts\activate
 ```
 
-install all python packages
+after going into the vertual envierment, `install all python packages`
 ```bash
     pip install -r requirements.txt
 ```
 
-then run
+then start/run the backend
 ```bash
     python3 app.py
 ```
@@ -73,7 +77,11 @@ then run
 ### `Frontend`
 
 In another terminal
+
+cd into the project folder again
+
 ```bash
     cd food-rec-frontend
+    npm install
     npm start
 ```
