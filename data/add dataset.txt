@@ -1,0 +1,11 @@
+download link: https://www.kaggle.com/datasets/irkaal/foodcom-recipes-and-reviews/data
+
+download the zip file and unzip its contents into the data folder
+
+is should look like this
+
+/data
+  L recipes.csv
+  L recipes.parquet
+  L reviews.csv
+  L reviews.parquet
