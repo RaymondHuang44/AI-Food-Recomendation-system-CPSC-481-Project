@@ -13,7 +13,12 @@ A Food Recomendation System created using Kagle Database with JSX (react) for th
 - [Cisco Velasquez](https://www.github.com/ciscovelasquez)
 
 
+## System Requirements
 
+OS: Windows 10, macOS, Unix
+Language/runtime versions: Python 3, JavaScript (React + Node.js), CSS, JSON, HTML
+Framework: React, Flask
+Libraries: axios, ReactDOM, Flask, flask_cors, pandas, scikit-learn, json, math, random
 
 ## Installation
 
@@ -63,7 +68,7 @@ have `node.js` installed
     env\Scripts\activate
 ```
 
-after going into the vertual envierment, `install all python packages`
+after going into the virtual environment, `install all python packages`
 ```bash
     pip install -r requirements.txt
 ```
