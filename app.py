@@ -162,11 +162,17 @@ def recommend():
                         [filtered, more_recommendations]).drop_duplicates()
 
     # Return top results
-    return jsonify(filtered[['Name', 'Calories', 'RecipeCategory', 'FatContent',
+    filtered_recipes = filtered[['Name', 'Calories', 'RecipeCategory', 'FatContent',
                            'SaturatedFatContent', 'CarbohydrateContent', 'SugarContent', 
                            'FiberContent', 'CholesterolContent', 'SodiumContent', 
-                           'ProteinContent', 'RecipeIngredientParts']
-                                            ].head(38).to_dict(orient='records'))
+                           'ProteinContent', 'RecipeIngredientParts']].head(38)
+    
+    # Convert RecipeIngredientParts to a proper array format and clean up the format
+    filtered_recipes['RecipeIngredientParts'] = filtered_recipes['RecipeIngredientParts'].apply(
+        lambda x: [ing.replace('"', '').replace("'", "").strip() for ing in x.replace('c(', '').replace(')', '').split(',')] if isinstance(x, str) else []
+    )
+    
+    return jsonify(filtered_recipes.to_dict(orient='records'))
 
 @app.route('/api/nutrient-needs', methods=['POST'])
 def nutrient_needs():

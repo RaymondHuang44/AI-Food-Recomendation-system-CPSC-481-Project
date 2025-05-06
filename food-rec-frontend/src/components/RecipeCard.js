@@ -8,23 +8,33 @@ const RecipeCard = ({ recipe }) => {
 
   // ingredients
   let ingredients = [];
+  console.log('RecipeIngredientParts:', recipe.RecipeIngredientParts);
   if (Array.isArray(recipe.RecipeIngredientParts)) {
     ingredients = recipe.RecipeIngredientParts;
   } else if (typeof recipe.RecipeIngredientParts === 'string') {
     try {
-      // Try JSON first
       ingredients = JSON.parse(recipe.RecipeIngredientParts);
-    } catch {
+      if (!Array.isArray(ingredients)) {
+        console.warn('Parsed JSON is not an array:', ingredients);
+        ingredients = [];
+      }
+    } catch (e) {
+      console.log('JSON parse failed, trying R vector format');
       const rVecMatch = recipe.RecipeIngredientParts.match(/^c\((.*)\)$/);
       if (rVecMatch) {
         ingredients = rVecMatch[1]
           .split(',')
           .map(s => s.trim().replace(/^"(.*)"$/, '$1'));
       } else {
+        console.warn('Could not parse ingredients string:', recipe.RecipeIngredientParts);
         ingredients = [];
       }
     }
+  } else {
+    console.warn('RecipeIngredientParts is neither array nor string:', recipe.RecipeIngredientParts);
+    ingredients = [];
   }
+  console.log('Parsed ingredients:', ingredients);
 
   const handleOpen = () => {
     setExpanded(true);

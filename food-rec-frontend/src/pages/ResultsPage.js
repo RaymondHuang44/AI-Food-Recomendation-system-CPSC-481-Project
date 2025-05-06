@@ -1,9 +1,8 @@
 import React from 'react';
-import Recommendations from '../components/Recommendations';
 import RecipeCard from '../components/RecipeCard';
 import '../App.css';
 
-const ResultsPage = ({ filters, results, onSearch, onGetMealPlan }) => {
+const ResultsPage = ({ results, onGetMealPlan }) => {
   return (
     <div className="results-bg">
       <div className="results-header-container">
