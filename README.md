@@ -48,6 +48,11 @@ The `data` folder should look like this
     
 ## Deployment
 
+`Video Guides`
+
+- [Windows](https://youtu.be/ot-tu12wgOk)
+- [MacOS](https://youtu.be/mfnv05zZR1U)
+
 To deploy this project
 
 have `node.js` installed 
@@ -77,8 +82,14 @@ after going into the virtual environment, `install all python packages`
 ```
 
 then start/run the backend
+`macOS and Linux`
 ```bash
     python3 app.py
+```
+
+`Windows`
+```bash
+    python app.py
 ```
 
 
